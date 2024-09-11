@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-x=gzhye1y5rfay1tzki@x*qri6cn+hf=)cw3j(p)i=yoj$i19m
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'app.User'
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = 'app.User'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -128,3 +130,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES' : [
+         'rest_framework.authentication.TokenAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}

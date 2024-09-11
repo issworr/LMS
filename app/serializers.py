@@ -1,5 +1,10 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Author,Category,Book
+from .models import Author,Category,Book,User
+
+class UserSerializers(ModelSerializer):
+    class Meta:
+        model = User
+        fields =['username','email','password']
 
 
 class AuthorSerializers(ModelSerializer):

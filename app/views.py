@@ -1,11 +1,16 @@
 from django.shortcuts import render 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from .models import Author,Category,Book
-from .serializers import AuthorSerializers, CategorySerializers,BookSerializers
+from .models import Author,Category,Book,User
+from .serializers import AuthorSerializers, CategorySerializers,BookSerializers,UserSerializers
 
 
 
+class UserApiView(ModelViewSet):
+    queryset = User.objects.all()
+    serializers_class = UserSerializers
+
+    
 class AuthorApiView(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializers
